@@ -85,8 +85,10 @@ app.delete("/employees/:id", async(req, res) => {
   }
 })
 
+
 //GET all technical skills from employee... /employees/{employeeId}/skills
-//b74988d9-73d7-4d4c-bded-5643f9269d19
+//"SELECT summary FROM employee WHERE employee_uuid = $1"
+//"SELECT * FROM employee INNER JOIN skill ON employee.skill_uuid = skill.skill_uuid WHERE employee_uuid = $1"
 app.get("/employees/:id/skills", async(req, res) => {
   try {
     const { id } = req.params;
@@ -138,3 +140,5 @@ app.delete("/employees/:id/skills", async(req, res) => {
 app.listen(5000, () => {
   console.log('server has started on port 5000');
 });
+
+module.exports = app;
